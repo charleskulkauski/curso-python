@@ -1,28 +1,22 @@
-def alphabet_position(text):
-    alfabeto_txt = "abcdefghijklmnopqrstuvwxyz"
-    alfabeto = list(alfabeto_txt)
-    frase_final = ''
+recipe = {"cream": 200, "flour": 300, "sugar": 150, "milk": 100, "oil": 100}
+available = {"sugar": 1700, "flour": 20000, "milk": 20000, "oil": 30000, "cream": 5000}
+
+def cakes (recipe, available):
+    valores_final = {}
+    ing_faltantes = {}
+    for ing_receita, valor in recipe.items():
+        if ing_receita in available:
+            valores_final[ing_receita] = available[ing_receita] // valor
+        else:
+            ing_faltantes[ing_receita] = valor
     
-    if len(text) < 1:
-        pass
+    if len(ing_faltantes) > 0:
+        return 0
+    else:
+        menor_valor = min(valores_final.values())
+        return menor_valor
+            
     
-    texto_formatado = text.replace(" ", "").lower()
-    letras = list(texto_formatado)
     
-    for i, letra in enumerate(letras):
-        if letra == " ":
-            pass
-        
-        for i_alfabeto, letra_alfabeto in enumerate(alfabeto):
-            if letra == letra_alfabeto:
-                frase_final += str(i_alfabeto+1) + " "
-                
-    print(frase_final)
-                
-                
-def main():
-    alphabet_position("The sunset sets at twelve o' clock.")
-    
-if __name__ == "__main__":
-    main()
-        
+
+cakes(recipe, available)
